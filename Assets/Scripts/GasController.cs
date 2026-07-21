@@ -19,9 +19,10 @@ public class GasController : MonoBehaviour
    {
        useGasTimer += Time.deltaTime;
        if (useGasTimer > useGasCooldown){
-           currentGas = Mathf.Clamp(currentGas - 0.01f, 0, maxGas);
+           currentGas = Mathf.Clamp(currentGas - 0.01f, 0.01f, maxGas);
            useGasTimer = useGasCooldown;
        }
+       Debug.Log(currentGas);
    }
 
 
