@@ -1,8 +1,8 @@
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 
 public class EnemyCarAI : MonoBehaviour
 {
+    /*
     public CarController carController;
     public Transform player;
 
@@ -37,5 +37,6 @@ public class EnemyCarAI : MonoBehaviour
         carController.steeringInput = steer;
         carController.accelerationInput = 1f;
     }
+    */
 }
 
