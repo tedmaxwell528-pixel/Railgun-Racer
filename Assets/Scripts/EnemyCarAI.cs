@@ -1,41 +1,53 @@
 using UnityEngine;
-using UnityEngine.InputSystem.XR;
 
+[RequireComponent(typeof(Rigidbody2D))]
 public class EnemyCarAI : MonoBehaviour
 {
-    public CarController carController;
-    public Transform player;
+    public float moveSpeed = 5f;
+    public float turnSpeed = 200f;
+    public int followDistance = 30;
 
-    public float followDistance = 5f;
-    public int breadcrumbDelay = 40;
+    public Vector2 carForward = Vector2.up;
 
-    private int targetIndex;
+    private Rigidbody2D rb;
+
+    void Start()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        rb.gravityScale = 0f;
+    }
 
     void FixedUpdate()
     {
-        if (PlayerBreadcrumbs.breadcrumbs.Count <= breadcrumbDelay)
+        if (PlayerBreadcrumbs.breadcrumbs.Count <= followDistance)
             return;
 
-        // Follow an older point in the player's path
-        targetIndex = Mathf.Clamp(
-            PlayerBreadcrumbs.breadcrumbs.Count - breadcrumbDelay,
-            0,
-            PlayerBreadcrumbs.breadcrumbs.Count - 1
-        );
+        int targetIndex = PlayerBreadcrumbs.breadcrumbs.Count - followDistance;
 
         Vector2 target = PlayerBreadcrumbs.breadcrumbs[targetIndex];
 
-        Vector2 direction = target - (Vector2)transform.position;
+        Vector2 direction = target - rb.position;
 
-        // Convert direction into local space
-        float angle = Vector2.SignedAngle(transform.up, direction);
+        if (direction.magnitude < 0.1f)
+            return;
 
-        // Steering value from -1 to 1
-        float steer = Mathf.Clamp(angle / 45f, -1f, 1f);
+        direction.Normalize();
 
-        // Apply AI inputs to the car controller
-        carController.steeringInput = steer;
-        carController.accelerationInput = 1f;
+        // Calculate rotation
+        float targetAngle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+
+        // If your car faces UP, subtract 90 degrees
+        targetAngle -= 90f;
+
+        float angle = Mathf.MoveTowardsAngle(
+            rb.rotation,
+            targetAngle,
+            turnSpeed * Time.fixedDeltaTime
+        );
+
+        rb.MoveRotation(angle);
+
+        // Move forward
+        rb.linearVelocity = transform.up * moveSpeed;
     }
 }
-
