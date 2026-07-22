@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3753fa67981ffdb498c795aefe823f4f
+guid: 27c8c28823d1ee9478c75cb14e8de44b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -4905733447920948299
-    second: tire pile-1.png_0
+      213: -911305483715308010
+    second: tire pile-1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: tire pile-1.png_0
+      name: tire pile-1_0
       rect:
         serializedVersion: 2
         x: 17
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5bb6be9bb655bebb0800000000000000
-      internalID: -4905733447920948299
+      spriteID: 6169849ad746a53f0800000000000000
+      internalID: -911305483715308010
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      tire pile-1.png_0: -4905733447920948299
+      tire pile-1_0: -911305483715308010
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
