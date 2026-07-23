@@ -10,7 +10,6 @@ public class EnemyCarAI : MonoBehaviour
 
     private int targetIndex;
     private int breadcrumbsCount = PlayerBreadcrumbs.breadcrumbs.Count;
-    private float topSpeed = 10;
     private float topSpeed = 120;
     private float accelerationAmount = 5;
     private float rotationSpeed = 120;
