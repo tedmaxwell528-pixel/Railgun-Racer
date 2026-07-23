@@ -1,27 +1,24 @@
-/*using UnityEngine;
-using UnityEngine.InputSystem.XR;
+using UnityEngine;
 
 public class EnemyCarAI : MonoBehaviour
 {
-    public CarController carController;
+    public CarMovement carController;
     public Transform player;
 
     public float followDistance = 5f;
     public int breadcrumbDelay = 40;
 
     private int targetIndex;
+    private int breadcrumbsCount = PlayerBreadcrumbs.breadcrumbs.Count;
+    private float topSpeed = 10;
 
     void FixedUpdate()
     {
-        if (PlayerBreadcrumbs.breadcrumbs.Count <= breadcrumbDelay)
+        if (breadcrumbsCount <= breadcrumbDelay)
             return;
 
         // Follow an older point in the player's path
-        targetIndex = Mathf.Clamp(
-            PlayerBreadcrumbs.breadcrumbs.Count - breadcrumbDelay,
-            0,
-            PlayerBreadcrumbs.breadcrumbs.Count - 1
-        );
+        targetIndex = Mathf.Clamp(breadcrumbsCount - breadcrumbDelay, 0, breadcrumbsCount - 1);
 
         Vector2 target = PlayerBreadcrumbs.breadcrumbs[targetIndex];
 
@@ -31,12 +28,16 @@ public class EnemyCarAI : MonoBehaviour
         float angle = Vector2.SignedAngle(transform.up, direction);
 
         // Steering value from -1 to 1
-        float steer = Mathf.Clamp(angle / 45f, -1f, 1f);
+        float totalRotation = Mathf.Clamp(angle / 45f, -1f, 1f);
 
         // Apply AI inputs to the car controller
-        carController.steeringInput = steer;
-        carController.accelerationInput = 1f;
+        Vector2 acceleration = transform.up;
+        Vector2 velocity = acceleration * Time.deltaTime;
+        Vector2 driftVelocity = Vector3.ClampMagnitude(velocity, topSpeed);
+        Quaternion stiffRotation = Quaternion.AngleAxis(totalRotation, Vector3.forward);
+        Vector2 stiffVelocity = stiffRotation * driftVelocity; 
+        velocity = Vector2.Lerp(driftVelocity, stiffVelocity, 1);
+        
+        transform.position += (Vector3)velocity * Time.deltaTime;
     }
 }
-
-*/
