@@ -103,12 +103,12 @@ TextureImporter:
       name: Car (railgun)-1.png_0
       rect:
         serializedVersion: 2
-        x: 12
-        y: 2
-        width: 39
-        height: 61
+        x: 0
+        y: 0
+        width: 1152
+        height: 1152
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 04a82e67b67e64c2fad2ee9d24df4038
     internalID: 0
     vertices: []
     indices: 

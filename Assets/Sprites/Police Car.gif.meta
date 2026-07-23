@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 876d9a104976341af908644b5c026839
+guid: d54dd25c280354ccfb9fcc1e5d334a4d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7972955733876686943
-    second: background-1.png_0
+      213: -34569888450161212
+    second: Police Car_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: background-1.png_0
+      name: Police Car_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 2304
-        height: 2304
+        x: 287
+        y: 17
+        width: 560
+        height: 1082
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1afbd58a00f5a5190800000000000000
-      internalID: -7972955733876686943
+      spriteID: 4c5d00f9ede258ff0800000000000000
+      internalID: -34569888450161212
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      background-1.png_0: -7972955733876686943
+      Police Car_0: -34569888450161212
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
