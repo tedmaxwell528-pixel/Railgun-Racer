@@ -3,32 +3,33 @@ using UnityEngine;
 
 public class PlayerBreadcrumbs : MonoBehaviour
 {
-    // Shared list of positions that enemy cars can follow.
     public static List<Vector2> breadcrumbs = new List<Vector2>();
 
     [Header("Breadcrumb Settings")]
-    [SerializeField] float spacing = 0.5f;
-    [SerializeField] int maxBreadcrumbs = 1000;
+    public float spacing = 1f;
+    public int maxBreadcrumbs = 500;
 
     private Vector2 lastPosition;
 
     void Start()
     {
-        // Clear old breadcrumbs if the scene is restarted.
         breadcrumbs.Clear();
 
         lastPosition = transform.position;
         breadcrumbs.Add(lastPosition);
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        //Debug.Log(PrintBreadcrumbs(10));
-        if (Vector2.Distance(lastPosition, transform.position) >= spacing)
+        float distance = Vector2.Distance(lastPosition, transform.position);
+
+        if (distance >= spacing)
         {
             lastPosition = transform.position;
+
             breadcrumbs.Add(lastPosition);
 
+            // Keep list from getting too large
             if (breadcrumbs.Count > maxBreadcrumbs)
             {
                 breadcrumbs.RemoveAt(0);
@@ -36,13 +37,39 @@ public class PlayerBreadcrumbs : MonoBehaviour
         }
     }
 
-    string PrintBreadcrumbs(int amt){
-        string allBreadcrumbs = "";
-        if (breadcrumbs.Count >= amt){
-            for (int i = 0; i < amt; i++){
-                allBreadcrumbs += breadcrumbs[i];
-            }
+
+    // Used by enemy AI to get a point on the player's path
+    public static Vector2 GetBreadcrumb(int delay, int lookAhead)
+    {
+        if (breadcrumbs.Count == 0)
+            return Vector2.zero;
+
+        int index = breadcrumbs.Count - delay + lookAhead;
+
+        index = Mathf.Clamp(
+            index,
+            0,
+            breadcrumbs.Count - 1
+        );
+
+        return breadcrumbs[index];
+    }
+
+
+    // Optional debug visualization
+    void OnDrawGizmos()
+    {
+        if (breadcrumbs == null || breadcrumbs.Count < 2)
+            return;
+
+        Gizmos.color = Color.yellow;
+
+        for (int i = 1; i < breadcrumbs.Count; i++)
+        {
+            Gizmos.DrawLine(
+                breadcrumbs[i - 1],
+                breadcrumbs[i]
+            );
         }
-        return allBreadcrumbs;
     }
 }
