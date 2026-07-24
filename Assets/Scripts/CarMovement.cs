@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class CarMovement : MonoBehaviour
 {
     private Vector2 acceleration = Vector2.zero;
@@ -59,7 +58,7 @@ public class CarMovement : MonoBehaviour
     /// <param name="minMag"></param>
     /// <param name="maxMag"></param>
     /// <returns>The clamped vector</returns>
-    Vector3 ClampMagnitude(Vector3 vector, float minMag, float maxMag){
+    public Vector3 ClampMagnitude(Vector3 vector, float minMag, float maxMag){
         Vector3 clampedVector = vector.normalized;
         if (vector.magnitude < minMag){
             clampedVector *= minMag;

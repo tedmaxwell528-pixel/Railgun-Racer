@@ -23,6 +23,7 @@ public class PlayerBreadcrumbs : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(PrintBreadcrumbs(10));
         if (Vector2.Distance(lastPosition, transform.position) >= spacing)
         {
             lastPosition = transform.position;
@@ -33,5 +34,15 @@ public class PlayerBreadcrumbs : MonoBehaviour
                 breadcrumbs.RemoveAt(0);
             }
         }
+    }
+
+    string PrintBreadcrumbs(int amt){
+        string allBreadcrumbs = "";
+        if (breadcrumbs.Count >= amt){
+            for (int i = 0; i < amt; i++){
+                allBreadcrumbs += breadcrumbs[i];
+            }
+        }
+        return allBreadcrumbs;
     }
 }
