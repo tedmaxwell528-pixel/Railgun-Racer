@@ -6,8 +6,6 @@ public class PlayerBreadcrumbs : MonoBehaviour
     public static List<Vector2> breadcrumbs = new List<Vector2>();
 
     [Header("Breadcrumb Settings")]
-    public float spacing = 1f;
-    public int maxBreadcrumbs = 500;
     [SerializeField] float spacing = 0.5f;
     [SerializeField] int maxBreadcrumbs = 1000;
     [SerializeField] GameObject breadcrumbPrefab;
