@@ -18,6 +18,7 @@ public class CarMovement : MonoBehaviour
     private GasController gasController;
     private float gasPercentage;
     Camera mainCam;
+    float cameraOffset = 3;
   
    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,7 +32,7 @@ public class CarMovement : MonoBehaviour
     void FixedUpdate()
     {
         //Make camera track car
-        mainCam.transform.position = new Vector3(transform.position.x, transform.position.y, mainCam.transform.position.z);
+        mainCam.transform.position = new Vector3(transform.position.x, transform.position.y, mainCam.transform.position.z) + transform.up * cameraOffset;
 
         //Turn car based on inputs
         float totalRotation = GetTurnInput() * rotationSpeed * Time.deltaTime;
