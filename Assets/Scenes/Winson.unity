@@ -226,10 +226,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 682ea36a6621956439775ce1a670fa03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carController: {fileID: 1591788564}
-  player: {fileID: 1591788566}
-  followDistance: 1
+  carMovement: {fileID: 1591788564}
   breadcrumbDelay: 40
+  forwardAcceleration: 1
+  reverseAcceleration: -1
+  stuckSpeed: 0.5
+  stuckTime: 1
+  reverseDuration: 1
 --- !u!212 &16664099
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4570,7 +4573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spacing: 0.5
-  maxBreadcrumbs: 10
+  maxBreadcrumbs: 1000
 --- !u!61 &1591788568
 BoxCollider2D:
   m_ObjectHideFlags: 0
