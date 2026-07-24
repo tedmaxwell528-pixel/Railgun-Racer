@@ -4573,7 +4573,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spacing: 0.5
-  maxBreadcrumbs: 10
+  maxBreadcrumbs: 1000
 --- !u!61 &1591788568
 BoxCollider2D:
   m_ObjectHideFlags: 0

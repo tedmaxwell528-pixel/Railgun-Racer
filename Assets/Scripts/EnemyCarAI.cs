@@ -22,7 +22,7 @@ public class EnemyCarAI : MonoBehaviour
     private int breadcrumbsCount = PlayerBreadcrumbs.breadcrumbs.Count;
     private float topSpeed = 120;
     private float accelerationAmount = 5;
-    private float rotationSpeed = 120;
+    private float rotationSpeed = 60;
     private float moveSpeed = 120;
     private Vector2 lastPosition;
     private float stuckTimer, reverseTimer, reverseSteer, steeringInput, accelerationInput;
@@ -43,6 +43,21 @@ public class EnemyCarAI : MonoBehaviour
         // Measure speed.
         float speed = Vector2.Distance(transform.position, lastPosition) / Time.fixedDeltaTime;
         lastPosition = transform.position;
+
+        // Follow breadcrumbs.
+        targetIndex = Mathf.Clamp(
+            PlayerBreadcrumbs.breadcrumbs.Count - breadcrumbDelay,
+            0,
+            PlayerBreadcrumbs.breadcrumbs.Count - 1
+        );
+
+        Vector2 target = PlayerBreadcrumbs.breadcrumbs[targetIndex];
+        Vector2 direction = target - (Vector2)transform.position;
+
+        float angle = Vector2.SignedAngle(transform.up, direction);
+        float steer = Mathf.Clamp(angle / 45f, -1f, 1f);
+        steeringInput = steer;
+        accelerationInput = forwardAcceleration;
 
         // Check if stuck.
         if (!reversing)
@@ -73,25 +88,7 @@ public class EnemyCarAI : MonoBehaviour
             {
                 reversing = false;
             }
-
-            return;
         }
-
-        // Follow breadcrumbs.
-        targetIndex = Mathf.Clamp(
-            PlayerBreadcrumbs.breadcrumbs.Count - breadcrumbDelay,
-            0,
-            PlayerBreadcrumbs.breadcrumbs.Count - 1
-        );
-
-        Vector2 target = PlayerBreadcrumbs.breadcrumbs[targetIndex];
-        Vector2 direction = target - (Vector2)transform.position;
-
-        float angle = Vector2.SignedAngle(transform.up, direction);
-        float steer = Mathf.Clamp(angle / 45f, -1f, 1f);
-
-        steeringInput = steer;
-        accelerationInput = forwardAcceleration;
 
         // Steering value from -1 to 1
         float totalRotation = steer * rotationSpeed * Time.deltaTime;
