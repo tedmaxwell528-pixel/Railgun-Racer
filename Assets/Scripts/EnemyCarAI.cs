@@ -6,13 +6,17 @@ public class EnemyCarAI : MonoBehaviour
     public Transform player;
     private SceneLoader sceneLoader;
 
-    public float followDistance = 5f;
+    [Header("Path Following")]
     public int breadcrumbDelay = 40;
+
+    [Header("Acceleration")]
+    public float forwardAcceleration = 1f;
+    public float reverseAcceleration = -1f;
 
     [Header("Stuck Recovery")]
     public float stuckSpeed = 0.5f;
     public float stuckTime = 1f;
-    public float reverseTime = 1f;
+    public float reverseDuration = 1f;
 
     private int targetIndex;
     private int breadcrumbsCount = PlayerBreadcrumbs.breadcrumbs.Count;
@@ -29,6 +33,7 @@ public class EnemyCarAI : MonoBehaviour
     private float stuckTimer;
     private float reverseTimer;
     private bool reversing;
+    private float reverseSteer;
 
     void Start()
     {
@@ -40,42 +45,48 @@ public class EnemyCarAI : MonoBehaviour
         if (PlayerBreadcrumbs.breadcrumbs.Count <= breadcrumbDelay)
             return;
 
-        // Detect if the car is stuck.
+        // Measure speed.
         float speed = Vector2.Distance(transform.position, lastPosition) / Time.fixedDeltaTime;
         lastPosition = transform.position;
 
+        // Check if stuck.
         if (!reversing)
         {
             if (speed < stuckSpeed)
-                stuckTimer += Time.fixedDeltaTime;
-            else
-                stuckTimer = 0f;
-
-            if (stuckTimer >= stuckTime)
             {
-                reversing = true;
-                reverseTimer = reverseTime;
+                stuckTimer += Time.fixedDeltaTime;
+
+                if (stuckTimer >= stuckTime)
+                {
+                    reversing = true;
+                    reverseTimer = reverseDuration;
+                    reverseSteer = Random.value < 0.5f ? -1f : 1f;
+                    stuckTimer = 0f;
+                }
+            }
+            else
+            {
                 stuckTimer = 0f;
             }
         }
 
-        // Reverse to escape.
+        // Reverse mode.
         if (reversing)
         {
             reverseTimer -= Time.fixedDeltaTime;
 
-            carMovement.accelerationInput = -1f;
-
-            // Turn while reversing to get away from the wall.
-            carMovement.steeringInput = Random.value < 0.5f ? -1f : 1f;
+            carMovement.accelerationInput = reverseAcceleration;
+            carMovement.steeringInput = reverseSteer;
 
             if (reverseTimer <= 0f)
+            {
                 reversing = false;
+            }
 
             return;
         }
 
-        // Follow the player's breadcrumbs.
+        // Follow breadcrumbs.
         targetIndex = Mathf.Clamp(
             PlayerBreadcrumbs.breadcrumbs.Count - breadcrumbDelay,
             0,
@@ -89,7 +100,7 @@ public class EnemyCarAI : MonoBehaviour
         float steer = Mathf.Clamp(angle / 45f, -1f, 1f);
 
         carMovement.steeringInput = steer;
-        carMovement.accelerationInput = 1f;
+        carMovement.accelerationInput = forwardAcceleration;
     }
 
         // Steering value from -1 to 1
