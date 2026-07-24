@@ -2,7 +2,6 @@ using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-
 public class CarMovement : MonoBehaviour
 {
     private Vector2 acceleration = Vector2.zero;

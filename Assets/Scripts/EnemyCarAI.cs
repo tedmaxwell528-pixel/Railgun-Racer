@@ -4,6 +4,7 @@ public class EnemyCarAI : MonoBehaviour
 {
     public CarMovement carController;
     public Transform player;
+    private SceneLoader sceneLoader;
 
     public float followDistance = 5f;
     public int breadcrumbDelay = 40;
@@ -14,6 +15,10 @@ public class EnemyCarAI : MonoBehaviour
     private float accelerationAmount = 5;
     private float rotationSpeed = 120;
     private float moveSpeed = 120;
+
+    void Start(){
+        sceneLoader = GameObject.FindWithTag("GameController").GetComponent<SceneLoader>();
+    }
 
     void FixedUpdate()
     {
@@ -38,8 +43,11 @@ public class EnemyCarAI : MonoBehaviour
         Quaternion stiffRotation = Quaternion.AngleAxis(totalRotation, Vector3.forward);
         Vector2 stiffVelocity = stiffRotation * driftVelocity; 
         velocity = Vector2.Lerp(driftVelocity, stiffVelocity, 1) * moveSpeed;
-        Debug.Log(velocity);
         
         transform.position += (Vector3)velocity * Time.deltaTime;
+    }
+
+    void OnCollisionEnter2D(Collision2D collision){
+        if (collision.gameObject.CompareTag("Player")) sceneLoader.caught.Invoke();
     }
 }
