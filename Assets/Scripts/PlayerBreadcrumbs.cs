@@ -12,6 +12,7 @@ public class PlayerBreadcrumbs : MonoBehaviour
     [SerializeField] Transform breadcrumbHolder;
 
     private Vector2 lastPosition;
+    int currentIndex = 0;
 
     void Start()
     {
@@ -40,14 +41,10 @@ public class PlayerBreadcrumbs : MonoBehaviour
         }
     }
 
+    public static int GetBreadcrumbIndex(int delay){
+        if (breadcrumbs.Count == 0) return 0;
 
-    // Used by enemy AI to get a point on the player's path
-    public static Vector2 GetBreadcrumb(int delay, int lookAhead)
-    {
-        if (breadcrumbs.Count == 0)
-            return Vector2.zero;
-
-        int index = breadcrumbs.Count - delay + lookAhead;
+        int index = breadcrumbs.Count - delay;
 
         index = Mathf.Clamp(
             index,
@@ -55,7 +52,12 @@ public class PlayerBreadcrumbs : MonoBehaviour
             breadcrumbs.Count - 1
         );
 
-        return breadcrumbs[index];
+        return index;
+    }
+
+    // Used by enemy AI to get a point on the player's path
+    public static Vector2 GetBreadcrumb(int delay){
+        return breadcrumbs[GetBreadcrumbIndex(delay)];
     }
 
 
