@@ -12,7 +12,6 @@ public class PlayerBreadcrumbs : MonoBehaviour
     [SerializeField] Transform breadcrumbHolder;
 
     private Vector2 lastPosition;
-    int currentIndex = 0;
 
     void Start()
     {
@@ -61,7 +60,7 @@ public class PlayerBreadcrumbs : MonoBehaviour
     }
 
 
-    // Optional debug visualization
+    // Optional debug visualizations
     void OnDrawGizmos()
     {
         if (breadcrumbs == null || breadcrumbs.Count < 2)

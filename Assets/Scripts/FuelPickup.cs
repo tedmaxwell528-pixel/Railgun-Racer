@@ -6,6 +6,7 @@ public class FuelPickup : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            FuelSystem.ChangeFuel(10);
             Destroy(gameObject);
         }
     }

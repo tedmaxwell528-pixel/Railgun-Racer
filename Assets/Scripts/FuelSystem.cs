@@ -1,64 +1,52 @@
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class FuelSystem : MonoBehaviour
 {
     [Header("Fuel Settings")]
-    public float maxFuel = 100f;
-    public float currentFuel;
+    [SerializeField] static float maxFuel = 100f;
+    private static float currentFuel;
 
     [Header("Fuel Consumption")]
-    public float fuelConsumptionRate = 5f; // Fuel lost per second
-    public float speedThreshold = 0.1f; // Minimum speed needed to use fuel
+    [SerializeField] float fuelConsumptionRate = 5f; // Fuel lost per second
+    [SerializeField] static float speedThreshold = 0.1f; // Minimum speed needed to use fuel
 
-    private Rigidbody2D rb;
+    private static Rigidbody2D rb;
+    private static CarMovement car;
+
+    void Awake()
+    {
+        car = GetComponent<CarMovement>();
+    }
 
     void Start()
     {
         currentFuel = maxFuel;
-        rb = GetComponent<Rigidbody2D>();
     }
 
     void Update()
     {
-        UseFuel();
+        ChangeFuel(-fuelConsumptionRate * Time.deltaTime);
     }
 
-    void UseFuel()
+    /// <summary>
+    /// Changes the current fuel by <i>amount</i>.
+    /// <br/>If it is negative, the current fuel will be subtracted from.
+    /// </summary>
+    /// <param name="amount"></param>
+    public static void ChangeFuel(float amount)
     {
         // Check if car is moving
-        if (rb != null && rb.linearVelocity.magnitude > speedThreshold)
-        {
-            currentFuel -= fuelConsumptionRate * Time.deltaTime;
-        }
-
-        // Prevent negative fuel
-        if (currentFuel <= 0)
-        {
-            currentFuel = 0;
-            StopCar();
+        if (car.CurrentVelocity.magnitude > speedThreshold){
+            currentFuel = Mathf.Clamp(currentFuel + amount, 0, maxFuel);
         }
     }
 
-    public void AddFuel(float amount)
-    {
-        currentFuel += amount;
-
-        // Prevent fuel from going over max
-        if (currentFuel > maxFuel)
-        {
-            currentFuel = maxFuel;
-        }
-
-        Debug.Log("Fuel: " + currentFuel);
-    }
-
-    void StopCar()
-    {
-        Debug.Log("Out of fuel!");
-
-        if (rb != null)
-        {
-            rb.linearVelocity = Vector2.zero;
-        }
+    /// <summary>
+    /// Calculates the percentage of current gas remaining.
+    /// </summary>
+    /// <returns>A float from 0 to 1.</returns>
+    public static float GetGasPercentage(){
+        return currentFuel/maxFuel;
     }
 }
