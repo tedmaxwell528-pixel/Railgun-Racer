@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class EnemyCarAI : MonoBehaviour
 {
@@ -22,10 +23,12 @@ public class EnemyCarAI : MonoBehaviour
     private int breadcrumbsCount = PlayerBreadcrumbs.breadcrumbs.Count;
     private float topSpeed = 120;
     private float accelerationAmount = 5;
-    private float rotationSpeed = 60;
+    private float rotationSpeed = 300;
     private float moveSpeed = 120;
+    private float getCloserDuration = 2;
+    private float tooFar = 50;
     private Vector2 lastPosition;
-    private float stuckTimer, reverseTimer, reverseSteer, steeringInput, accelerationInput;
+    private float stuckTimer, reverseTimer, reverseSteer, steeringInput, accelerationInput, closerTimer;
     private bool reversing;
 
     void Start()
@@ -33,12 +36,13 @@ public class EnemyCarAI : MonoBehaviour
         //sceneLoader = GameObject.FindWithTag("GameController").GetComponent<SceneLoader>();
         lastPosition = transform.position;
         player = GameObject.FindWithTag("Player").transform;
+        closerTimer = getCloserDuration;
     }
 
     void FixedUpdate()
     {
-        if (PlayerBreadcrumbs.breadcrumbs.Count <= breadcrumbDelay)
-            return;
+        breadcrumbsCount = PlayerBreadcrumbs.breadcrumbs.Count;
+        if (breadcrumbsCount <= breadcrumbDelay) return;
 
         // Measure speed.
         float speed = Vector2.Distance(transform.position, lastPosition) / Time.fixedDeltaTime;
@@ -46,9 +50,9 @@ public class EnemyCarAI : MonoBehaviour
 
         // Follow breadcrumbs.
         targetIndex = Mathf.Clamp(
-            PlayerBreadcrumbs.breadcrumbs.Count - breadcrumbDelay,
+            breadcrumbsCount - breadcrumbDelay,
             0,
-            PlayerBreadcrumbs.breadcrumbs.Count - 1
+            breadcrumbsCount - 1
         );
 
         Vector2 target = PlayerBreadcrumbs.breadcrumbs[targetIndex];
@@ -87,11 +91,12 @@ public class EnemyCarAI : MonoBehaviour
             if (reverseTimer <= 0f)
             {
                 reversing = false;
+                reverseTimer = reverseDuration;
             }
         }
 
         // Steering value from -1 to 1
-        float totalRotation = steer * rotationSpeed * Time.deltaTime;
+        float totalRotation = steeringInput * rotationSpeed * Time.deltaTime;
         transform.Rotate(0,0,totalRotation);
 
         // Apply AI inputs to the car controller
@@ -99,13 +104,50 @@ public class EnemyCarAI : MonoBehaviour
         Vector2 velocity = acceleration * Time.deltaTime;
         Vector2 driftVelocity = Vector3.ClampMagnitude(velocity, topSpeed);
         Quaternion stiffRotation = Quaternion.AngleAxis(totalRotation, Vector3.forward);
-        Vector2 stiffVelocity = stiffRotation * driftVelocity; 
-        velocity = Vector2.Lerp(driftVelocity, stiffVelocity, 1) * moveSpeed;
+        velocity = stiffRotation * driftVelocity * moveSpeed;
         
         transform.position += (Vector3)velocity * Time.deltaTime;
+
+        closerTimer -= Time.deltaTime;
+        if (closerTimer <= 0){
+            TargetKill();
+            closerTimer = getCloserDuration;
+        }
+
+        if (Vector2.Distance(player.position, transform.position) >= tooFar){
+            transform.position = PlayerBreadcrumbs.breadcrumbs[breadcrumbsCount-50];
+        }
     }
 
     void OnCollisionEnter2D(Collision2D collision){
         //if (collision.gameObject.CompareTag("Player")) sceneLoader.caught.Invoke();
+    }
+
+    /// <summary>
+    /// If the current gas percentage is above 95%, the police car will lengthen 
+    /// the gap between it and the player.
+    /// <br/>If it is between 80% to 90%, the police car will shorten the gap
+    /// between it and the player.
+    /// <br/>Under 80%, the police car will quickly shorten the gap.
+    /// <br/>If the gap is short enough, the time it takes for the cop car to get closer
+    /// will get shorter.
+    /// </summary>
+    void TargetKill(){
+        float quicken = 20;
+        if (breadcrumbDelay > 5){
+            float pct = GasController.GetGasPercentage();
+            if (pct >= 0.95f){
+                breadcrumbDelay = Mathf.Clamp(breadcrumbDelay++, 0, 40);
+            } else if (pct >= 0.8f && pct <= 0.9f){
+                breadcrumbDelay--;
+            } else {
+                breadcrumbDelay = Mathf.Clamp(breadcrumbDelay - 2, 0, 40);
+            }
+        }
+        if (breadcrumbDelay <= quicken){
+            getCloserDuration = Mathf.Lerp(1,5,breadcrumbDelay/quicken);
+        } else {
+            getCloserDuration = 5;
+        }
     }
 }
