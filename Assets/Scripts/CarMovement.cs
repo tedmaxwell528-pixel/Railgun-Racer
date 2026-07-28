@@ -18,11 +18,11 @@ public class CarMovement : MonoBehaviour
     private GasController gasController;
     private float gasPercentage;
     Camera mainCam;
+    float cameraOffset = 3;
   
    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gasController = GetComponent<GasController>();
         mainCam = Camera.main;
     }
 
@@ -31,19 +31,23 @@ public class CarMovement : MonoBehaviour
     void FixedUpdate()
     {
         //Make camera track car
-        mainCam.transform.position = new Vector3(transform.position.x, transform.position.y, mainCam.transform.position.z);
+        mainCam.transform.position = new Vector3(transform.position.x, transform.position.y, mainCam.transform.position.z) + transform.up * cameraOffset;
 
         //Turn car based on inputs
         float totalRotation = GetTurnInput() * rotationSpeed * Time.deltaTime;
         transform.Rotate(0,0,totalRotation);
 
-        //Accelerate car based on gas amount
-        gasPercentage = gasController.GasPercentage();
-        acceleration = ClampMagnitude(transform.up * accelerationAmount * gasPercentage, accelerationAmount/2, accelerationAmount);
+        //Accelerate car
+        gasPercentage = GasController.GetGasPercentage();
+        acceleration = ClampMagnitude(transform.up * accelerationAmount, accelerationAmount/2, accelerationAmount);
         velocity += acceleration * Time.deltaTime;
 
+        //Restrict top speed based on gas percentage
+        float adjustedSpeed = Mathf.Clamp(topSpeed * gasPercentage, topSpeed*0.2f, topSpeed);
+        Debug.Log(adjustedSpeed);
+
         //Lessen drift of the car based on steeringStiffness
-        Vector2 driftVelocity = Vector3.ClampMagnitude(velocity, topSpeed);
+        Vector2 driftVelocity = Vector3.ClampMagnitude(velocity, adjustedSpeed);
         Quaternion stiffRotation = Quaternion.AngleAxis(totalRotation, Vector3.forward);
         Vector2 stiffVelocity = stiffRotation * driftVelocity; 
         velocity = Vector2.Lerp(driftVelocity, stiffVelocity, steeringStiffness);
