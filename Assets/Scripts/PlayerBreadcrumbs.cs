@@ -8,6 +8,10 @@ public class PlayerBreadcrumbs : MonoBehaviour
     [Header("Breadcrumb Settings")]
     public float spacing = 1f;
     public int maxBreadcrumbs = 500;
+    [SerializeField] float spacing = 0.5f;
+    [SerializeField] int maxBreadcrumbs = 1000;
+    [SerializeField] GameObject breadcrumbPrefab;
+    [SerializeField] Transform breadcrumbHolder;
 
     private Vector2 lastPosition;
 
@@ -28,6 +32,7 @@ public class PlayerBreadcrumbs : MonoBehaviour
             lastPosition = transform.position;
 
             breadcrumbs.Add(lastPosition);
+            VisualizeBreadcrumbs();
 
             // Keep list from getting too large
             if (breadcrumbs.Count > maxBreadcrumbs)
@@ -71,5 +76,9 @@ public class PlayerBreadcrumbs : MonoBehaviour
                 breadcrumbs[i]
             );
         }
+    }
+
+    void VisualizeBreadcrumbs(){
+        Instantiate(breadcrumbPrefab, lastPosition, Quaternion.identity, breadcrumbHolder);
     }
 }
