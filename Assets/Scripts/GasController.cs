@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class GasController : MonoBehaviour
 {
-    float maxGas = 10;
-    float currentGas;
+    static float maxGas = 10;
+    static float currentGas;
     float useGasCooldown = 0.25f;
     float useGasTimer = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,12 +25,15 @@ public class GasController : MonoBehaviour
         //Debug.Log(currentGas);
     }
 
-
-    public float GasPercentage(){
+    /// <summary>
+    /// Calculates the percentage of current gas remaining.
+    /// </summary>
+    /// <returns>A float from 0 to 1.</returns>
+    public static float GetGasPercentage(){
         return currentGas/maxGas;
     }
 
-    public void AddGas(){
+    public static void AddGas(){
         currentGas++;
     }
 }
