@@ -1,4 +1,4 @@
-using UnityEditor.PackageManager;
+using TMPro;
 using UnityEngine;
 
 public class FuelSystem : MonoBehaviour
@@ -11,6 +11,7 @@ public class FuelSystem : MonoBehaviour
     [SerializeField] float fuelConsumptionRate = 5f; // Fuel lost per second
     [SerializeField] static float speedThreshold = 0.1f; // Minimum speed needed to use fuel
 
+    [SerializeField] TMP_Text gasText;
     private static Rigidbody2D rb;
     private static CarMovement car;
 
@@ -27,6 +28,7 @@ public class FuelSystem : MonoBehaviour
     void Update()
     {
         ChangeFuel(-fuelConsumptionRate * Time.deltaTime);
+        gasText.text = $"{Mathf.Round(currentFuel)} / {maxFuel}";
     }
 
     /// <summary>
@@ -37,7 +39,7 @@ public class FuelSystem : MonoBehaviour
     public static void ChangeFuel(float amount)
     {
         // Check if car is moving
-        if (car.CurrentVelocity.magnitude > speedThreshold){
+        if (car.CurrentVelocityMagnitude > speedThreshold){
             currentFuel = Mathf.Clamp(currentFuel + amount, 0, maxFuel);
         }
     }

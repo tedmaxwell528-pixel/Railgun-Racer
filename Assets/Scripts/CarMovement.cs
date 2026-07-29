@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +6,7 @@ public class CarMovement : MonoBehaviour
 {
     private Vector2 acceleration = Vector2.zero;
     private Vector2 velocity = Vector2.zero;
-    public Vector2 CurrentVelocity => velocity;
+    public float CurrentVelocityMagnitude => velocity.magnitude;
 
     [Header("Car Stats")]
     [SerializeField] private float topSpeed;
@@ -16,6 +15,9 @@ public class CarMovement : MonoBehaviour
     [Tooltip("Float from 0 to 1.")]
     [SerializeField] private float steeringStiffness;
     
+    [Header("Sounds")]
+    [SerializeField] AudioClip playerHit;
+
     public Action<float> updateCurrentGas = null;
     private float gasPercentage;
     Camera mainCam;
@@ -52,6 +54,21 @@ public class CarMovement : MonoBehaviour
         Vector2 stiffVelocity = stiffRotation * driftVelocity; 
         velocity = Vector2.Lerp(driftVelocity, stiffVelocity, steeringStiffness);
         transform.position += (Vector3)velocity * Time.fixedDeltaTime;
+
+        AudioController.isDriving.Invoke(velocity.magnitude > 3);
+    }
+
+    //Lower current speed when hitting an obstacle
+    void OnCollisionEnter2D(Collision2D collision){
+        if (collision.gameObject.CompareTag("Obstacle")){
+            Destroy(collision.gameObject);
+            AudioController.playSfx.Invoke(playerHit);
+            velocity *= 0.5f;
+            FuelSystem.ChangeFuel(-2);
+        } else if (collision.gameObject.CompareTag("Wall")){
+            AudioController.playSfx.Invoke(playerHit);
+            FuelSystem.ChangeFuel(-1);
+        }
     }
 
     /// <summary>
