@@ -1,5 +1,4 @@
 using System;
-using UnityEditor.Callbacks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -52,6 +51,14 @@ public class CarMovement : MonoBehaviour
         Vector2 stiffVelocity = stiffRotation * driftVelocity; 
         velocity = Vector2.Lerp(driftVelocity, stiffVelocity, steeringStiffness);
         transform.position += (Vector3)velocity * Time.fixedDeltaTime;
+    }
+
+    //Lower current speed when hitting an obstacle
+    void OnCollisionEnter2D(Collision2D collision){
+        if (collision.gameObject.CompareTag("Obstacle")){
+            Destroy(collision.gameObject);
+            velocity *= 0.5f;
+        }
     }
 
     /// <summary>
