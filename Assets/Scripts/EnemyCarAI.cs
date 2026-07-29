@@ -9,6 +9,7 @@ public class EnemyCarAI : MonoBehaviour
 
     [Header("Path Following")]
     [SerializeField] int breadcrumbDelay = 40;
+    int currentDelay;
 
     [Header("Acceleration")]
     [SerializeField] float forwardAcceleration = 1f;
@@ -37,6 +38,7 @@ public class EnemyCarAI : MonoBehaviour
         lastPosition = transform.position;
         player = GameObject.FindWithTag("Player").transform;
         closerTimer = getCloserDuration;
+        currentDelay = breadcrumbDelay;
     }
 
     void FixedUpdate()
@@ -133,21 +135,27 @@ public class EnemyCarAI : MonoBehaviour
     /// will get shorter.
     /// </summary>
     void TargetKill(){
-        float quicken = 20;
-        if (breadcrumbDelay > 5){
+        //When the cop car will start quickly shortening the gap
+        float quicken = breadcrumbDelay/2;
+        if (currentDelay > 5){
             float pct = FuelSystem.GetGasPercentage();
             if (pct >= 0.95f){
-                breadcrumbDelay = Mathf.Clamp(breadcrumbDelay++, 0, 40);
+                currentDelay = Mathf.Clamp(currentDelay++, 0, 40);
             } else if (pct >= 0.8f && pct <= 0.9f){
-                breadcrumbDelay--;
+                currentDelay--;
             } else {
-                breadcrumbDelay = Mathf.Clamp(breadcrumbDelay - 2, 0, 40);
+                currentDelay = Mathf.Clamp(currentDelay - 2, 0, 40);
             }
         }
-        if (breadcrumbDelay <= quicken){
-            getCloserDuration = Mathf.Lerp(1,5,breadcrumbDelay/quicken);
+
+        if (currentDelay <= quicken){
+            getCloserDuration = Mathf.Lerp(1,5,currentDelay/quicken);
         } else {
             getCloserDuration = 5;
+        }
+
+        if (carMovement.CurrentVelocityMagnitude <= 6){
+            currentDelay = Mathf.Clamp(currentDelay - 3, 0, 40);;
         }
     }
 }
