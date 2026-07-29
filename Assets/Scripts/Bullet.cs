@@ -13,7 +13,7 @@ public class Bullet : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Obstacle")){
             Destroy(collision.gameObject);
-            GameObject.FindFirstObjectByType<PointsManager>().AlterScore(100);
+            PointsManager.AlterScore(100);
             Destroy(gameObject);
         }
     }
