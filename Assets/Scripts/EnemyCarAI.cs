@@ -10,6 +10,7 @@ public class EnemyCarAI : MonoBehaviour
     [Header("Path Following")]
     [SerializeField] int breadcrumbDelay = 40;
     int currentDelay;
+    int minDelay = 5;
 
     [Header("Acceleration")]
     [SerializeField] float forwardAcceleration = 1f;
@@ -34,7 +35,7 @@ public class EnemyCarAI : MonoBehaviour
 
     void Start()
     {
-        //sceneLoader = GameObject.FindWithTag("GameController").GetComponent<SceneLoader>();
+        sceneLoader = GameObject.FindWithTag("GameController").GetComponent<SceneLoader>();
         lastPosition = transform.position;
         player = GameObject.FindWithTag("Player").transform;
         closerTimer = getCloserDuration;
@@ -140,12 +141,16 @@ public class EnemyCarAI : MonoBehaviour
         if (currentDelay > 5){
             float pct = FuelSystem.GetGasPercentage();
             if (pct >= 0.95f){
-                currentDelay = Mathf.Clamp(currentDelay++, 0, 40);
+                ChangeDelay(1);
             } else if (pct >= 0.8f && pct <= 0.9f){
-                currentDelay--;
+                ChangeDelay(-1);
             } else {
-                currentDelay = Mathf.Clamp(currentDelay - 2, 0, 40);
+                ChangeDelay(-2);
             }
+        }
+
+        if (carMovement.CurrentVelocityMagnitude <= 6){
+            ChangeDelay(-3);
         }
 
         if (currentDelay <= quicken){
@@ -153,9 +158,9 @@ public class EnemyCarAI : MonoBehaviour
         } else {
             getCloserDuration = 5;
         }
+    }
 
-        if (carMovement.CurrentVelocityMagnitude <= 6){
-            currentDelay = Mathf.Clamp(currentDelay - 3, 0, 40);;
-        }
+    void ChangeDelay(int change){
+        currentDelay = Mathf.Clamp(currentDelay + change, minDelay, breadcrumbDelay);
     }
 }

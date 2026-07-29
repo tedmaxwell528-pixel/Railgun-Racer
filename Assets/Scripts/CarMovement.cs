@@ -64,8 +64,10 @@ public class CarMovement : MonoBehaviour
             Destroy(collision.gameObject);
             AudioController.playSfx.Invoke(playerHit);
             velocity *= 0.5f;
+            FuelSystem.ChangeFuel(-2);
         } else if (collision.gameObject.CompareTag("Wall")){
             AudioController.playSfx.Invoke(playerHit);
+            FuelSystem.ChangeFuel(-1);
         }
     }
 
