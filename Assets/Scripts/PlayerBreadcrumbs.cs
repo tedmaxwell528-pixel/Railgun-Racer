@@ -30,7 +30,7 @@ public class PlayerBreadcrumbs : MonoBehaviour
             lastPosition = transform.position;
 
             breadcrumbs.Add(lastPosition);
-            VisualizeBreadcrumbs();
+            //VisualizeBreadcrumbs();
 
             // Keep list from getting too large
             if (breadcrumbs.Count > maxBreadcrumbs)

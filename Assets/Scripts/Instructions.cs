@@ -14,5 +14,6 @@ public class Instructions : MonoBehaviour
     public void CloseInstructions(){
         instructions.SetActive(false);
         Time.timeScale = 1;
+        AudioController.startBgmLoop.Invoke();
     }
 }

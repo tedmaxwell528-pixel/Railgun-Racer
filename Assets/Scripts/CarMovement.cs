@@ -6,7 +6,7 @@ public class CarMovement : MonoBehaviour
 {
     private Vector2 acceleration = Vector2.zero;
     private Vector2 velocity = Vector2.zero;
-    public Vector2 CurrentVelocity => velocity;
+    public float CurrentVelocityMagnitude => velocity.magnitude;
 
     [Header("Car Stats")]
     [SerializeField] private float topSpeed;
@@ -15,6 +15,9 @@ public class CarMovement : MonoBehaviour
     [Tooltip("Float from 0 to 1.")]
     [SerializeField] private float steeringStiffness;
     
+    [Header("Sounds")]
+    [SerializeField] AudioClip playerHit;
+
     public Action<float> updateCurrentGas = null;
     private float gasPercentage;
     Camera mainCam;
@@ -58,6 +61,8 @@ public class CarMovement : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle")){
             Destroy(collision.gameObject);
             velocity *= 0.5f;
+        } else if (collision.gameObject.CompareTag("Wall")){
+            AudioController.playSfx.Invoke(playerHit);
         }
     }
 

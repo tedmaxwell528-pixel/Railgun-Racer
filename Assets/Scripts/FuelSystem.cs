@@ -37,7 +37,7 @@ public class FuelSystem : MonoBehaviour
     public static void ChangeFuel(float amount)
     {
         // Check if car is moving
-        if (car.CurrentVelocity.magnitude > speedThreshold){
+        if (car.CurrentVelocityMagnitude > speedThreshold){
             currentFuel = Mathf.Clamp(currentFuel + amount, 0, maxFuel);
         }
     }

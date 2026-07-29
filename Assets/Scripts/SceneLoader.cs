@@ -6,13 +6,15 @@ public class SceneLoader : MonoBehaviour
 {
     public Action caught = null;
     public Action restart = null;
+    public static SceneLoader instance = null;
 
     void Awake(){
-        SceneLoader[] objs = FindObjectsByType<SceneLoader>(FindObjectsSortMode.None);
-        if (objs.Length > 1){
+        if (instance == null){
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else {
             Destroy(gameObject);
         }
-        DontDestroyOnLoad(gameObject);
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
