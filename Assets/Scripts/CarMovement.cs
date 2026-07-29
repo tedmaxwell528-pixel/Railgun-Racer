@@ -6,6 +6,7 @@ public class CarMovement : MonoBehaviour
 {
     private Vector2 acceleration = Vector2.zero;
     private Vector2 velocity = Vector2.zero;
+    public float CurrentVelocityMagnitude => velocity.magnitude;
 
     [Header("Car Stats")]
     [SerializeField] private float topSpeed;
@@ -14,18 +15,19 @@ public class CarMovement : MonoBehaviour
     [Tooltip("Float from 0 to 1.")]
     [SerializeField] private float steeringStiffness;
     
+    [Header("Sounds")]
+    [SerializeField] AudioClip playerHit;
+
     public Action<float> updateCurrentGas = null;
-    private GasController gasController;
     private float gasPercentage;
     Camera mainCam;
     float cameraOffset = 3;
-  
+
    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         mainCam = Camera.main;
     }
-
 
     // Update is called once per frame
     void FixedUpdate()
@@ -38,21 +40,35 @@ public class CarMovement : MonoBehaviour
         transform.Rotate(0,0,totalRotation);
 
         //Accelerate car
-        gasPercentage = GasController.GetGasPercentage();
-        acceleration = ClampMagnitude(transform.up * accelerationAmount, accelerationAmount/2, accelerationAmount);
-        velocity += acceleration * Time.deltaTime;
+        gasPercentage = FuelSystem.GetGasPercentage();
+        float adjustedAccelerationAmt = accelerationAmount/2 + accelerationAmount/2 * gasPercentage;
+        acceleration = ClampMagnitude(transform.up * adjustedAccelerationAmt, accelerationAmount/2, accelerationAmount);
+        velocity += acceleration * Time.fixedDeltaTime;
 
         //Restrict top speed based on gas percentage
         float adjustedSpeed = Mathf.Clamp(topSpeed * gasPercentage, topSpeed*0.2f, topSpeed);
-        Debug.Log(adjustedSpeed);
 
         //Lessen drift of the car based on steeringStiffness
         Vector2 driftVelocity = Vector3.ClampMagnitude(velocity, adjustedSpeed);
         Quaternion stiffRotation = Quaternion.AngleAxis(totalRotation, Vector3.forward);
         Vector2 stiffVelocity = stiffRotation * driftVelocity; 
         velocity = Vector2.Lerp(driftVelocity, stiffVelocity, steeringStiffness);
+        transform.position += (Vector3)velocity * Time.fixedDeltaTime;
 
-        transform.position += (Vector3)velocity * Time.deltaTime;
+        AudioController.isDriving.Invoke(velocity.magnitude > 3);
+    }
+
+    //Lower current speed when hitting an obstacle
+    void OnCollisionEnter2D(Collision2D collision){
+        if (collision.gameObject.CompareTag("Obstacle")){
+            Destroy(collision.gameObject);
+            AudioController.playSfx.Invoke(playerHit);
+            velocity *= 0.5f;
+            FuelSystem.ChangeFuel(-2);
+        } else if (collision.gameObject.CompareTag("Wall")){
+            AudioController.playSfx.Invoke(playerHit);
+            FuelSystem.ChangeFuel(-1);
+        }
     }
 
     /// <summary>
@@ -88,7 +104,3 @@ public class CarMovement : MonoBehaviour
         return turnInput;
     }
 }
-
-
-
-
