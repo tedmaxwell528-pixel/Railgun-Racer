@@ -2,16 +2,21 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    public float life = 3;
+    [SerializeField] float life = 3;
+    [SerializeField] AudioClip hitSfx;
 
-    void Awake()
+    void Start()
     {
         Destroy(gameObject, life);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
-        Destroy(gameObject);
+        if (collision.gameObject.CompareTag("Obstacle")){
+            Destroy(collision.gameObject);
+            PointsManager.AlterScore(100);
+            AudioController.playSfx.Invoke(hitSfx);
+            Destroy(gameObject);
+        }
     }
 }
