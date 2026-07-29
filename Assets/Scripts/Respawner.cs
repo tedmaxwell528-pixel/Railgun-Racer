@@ -10,6 +10,7 @@ public class Respawner : MonoBehaviour
     void Start()
     {
         respawnTimer = respawnCooldown;
+        RespawnObject();
     }
 
     // Update is called once per frame
@@ -18,10 +19,14 @@ public class Respawner : MonoBehaviour
         if (transform.childCount == 0){
             respawnTimer -= Time.deltaTime;
             if (respawnTimer <= 0){
-                GameObject respawnedbject = Instantiate(toRespawn, transform);
-                respawnedbject.transform.localPosition = Vector3.zero;
+                RespawnObject();
                 respawnTimer = respawnCooldown;
             }
         }
+    }
+
+    void RespawnObject(){
+        GameObject respawnedbject = Instantiate(toRespawn, transform);
+        respawnedbject.transform.localPosition = Vector3.zero;
     }
 }

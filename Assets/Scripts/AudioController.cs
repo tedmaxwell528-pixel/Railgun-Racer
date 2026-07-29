@@ -4,10 +4,12 @@ using UnityEngine;
 public class AudioController : MonoBehaviour
 {
     AudioSource bgmPlayer, sfxPlayer;
+    [SerializeField] AudioSource driveLoopPlayer;
     [SerializeField] AudioClip driveLoop;
     [SerializeField] AudioClip bgmLoop;
     public static Action<AudioClip> playSfx = null;
-    public static Action startBgmLoop = null;
+    public static Action startSoundLoops = null;
+    public static Action<bool> isDriving = null;
 
     void Awake()
     {
@@ -20,8 +22,11 @@ public class AudioController : MonoBehaviour
         bgmPlayer = Camera.main.gameObject.GetComponent<AudioSource>();
         bgmPlayer.clip = bgmLoop;
         bgmPlayer.loop = true;
+        driveLoopPlayer.clip = driveLoop;
+        driveLoopPlayer.loop = true;
         playSfx += PlaySound;
-        startBgmLoop += StartLoop;
+        startSoundLoops += StartLoops;
+        isDriving += DriveLoopState;
     }
 
     void PlaySound(AudioClip sfx){
@@ -29,7 +34,16 @@ public class AudioController : MonoBehaviour
         sfxPlayer.Play();
     }
 
-    void StartLoop(){
+    void StartLoops(){
         bgmPlayer.Play();
+        driveLoopPlayer.Play();
+    }
+
+    void DriveLoopState(bool state){
+        if (state && !driveLoopPlayer.isPlaying){
+            driveLoopPlayer.Play();
+        } else if (!state && driveLoopPlayer.isPlaying){
+            driveLoopPlayer.Pause();
+        }
     }
 }

@@ -54,12 +54,15 @@ public class CarMovement : MonoBehaviour
         Vector2 stiffVelocity = stiffRotation * driftVelocity; 
         velocity = Vector2.Lerp(driftVelocity, stiffVelocity, steeringStiffness);
         transform.position += (Vector3)velocity * Time.fixedDeltaTime;
+
+        AudioController.isDriving.Invoke(velocity.magnitude > 3);
     }
 
     //Lower current speed when hitting an obstacle
     void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.CompareTag("Obstacle")){
             Destroy(collision.gameObject);
+            AudioController.playSfx.Invoke(playerHit);
             velocity *= 0.5f;
         } else if (collision.gameObject.CompareTag("Wall")){
             AudioController.playSfx.Invoke(playerHit);
