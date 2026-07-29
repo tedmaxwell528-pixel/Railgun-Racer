@@ -120,7 +120,7 @@ public class EnemyCarAI : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision){
-        //if (collision.gameObject.CompareTag("Player")) sceneLoader.caught.Invoke();
+        if (sceneLoader != null && collision.gameObject.CompareTag("Player")) sceneLoader.caught.Invoke();
     }
 
     /// <summary>
@@ -135,7 +135,7 @@ public class EnemyCarAI : MonoBehaviour
     void TargetKill(){
         float quicken = 20;
         if (breadcrumbDelay > 5){
-            float pct = GasController.GetGasPercentage();
+            float pct = FuelSystem.GetGasPercentage();
             if (pct >= 0.95f){
                 breadcrumbDelay = Mathf.Clamp(breadcrumbDelay++, 0, 40);
             } else if (pct >= 0.8f && pct <= 0.9f){

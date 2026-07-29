@@ -4731,7 +4731,7 @@ GameObject:
   - component: {fileID: 1591788566}
   - component: {fileID: 1591788565}
   - component: {fileID: 1591788564}
-  - component: {fileID: 1591788563}
+  - component: {fileID: 1591788571}
   - component: {fileID: 1591788567}
   - component: {fileID: 1591788570}
   - component: {fileID: 1591788569}
@@ -4744,18 +4744,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1591788563
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1591788562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e684ef07cf654027b029b5eb074d44e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1591788564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5044,6 +5032,11 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8adf3caaed257a24bb8803c3ce9af5ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fuelConsumptionRate: 1
 --- !u!1001 &1632636736
 PrefabInstance:
   m_ObjectHideFlags: 0
