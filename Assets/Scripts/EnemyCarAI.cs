@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 
 public class EnemyCarAI : MonoBehaviour
 {
@@ -27,8 +26,6 @@ public class EnemyCarAI : MonoBehaviour
     [SerializeField] private float rotationSpeed = 300;
     [SerializeField] private float getCloserDuration = 2;
     [SerializeField] private float tooFar = 50;
-
-    [SerializeField] private AudioClip playerDie;
 
     private int targetIndex;
     private int breadcrumbsCount = PlayerBreadcrumbs.breadcrumbs.Count;
@@ -126,7 +123,6 @@ public class EnemyCarAI : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision){
         if (collision.gameObject.CompareTag("Player")){
-            AudioController.playSfx.Invoke(playerDie);
             SceneLoader.EndGame();
         }
     }

@@ -15,7 +15,7 @@ public class SceneLoader : MonoBehaviour
     }
 
     public static void MainMenu(){
-        SceneManager.LoadScene("StartScreen");
+        SceneManager.LoadScene("Start Screen");
     }
 
     public static void StartGame(){

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -15,7 +16,7 @@ public class Bullet : MonoBehaviour
         if (collision.gameObject.CompareTag("Obstacle")){
             Destroy(collision.gameObject);
             PointsManager.AlterScore(100);
-            AudioController.playSfx.Invoke(hitSfx);
+            AudioController.playSfx?.Invoke(hitSfx);
             Destroy(gameObject);
         }
     }
