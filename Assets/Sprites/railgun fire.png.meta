@@ -205,12 +205,12 @@ TextureImporter:
       name: railgun fire_0
       rect:
         serializedVersion: 2
-        x: 251
-        y: 3635
-        width: 74
-        height: 38
+        x: 250
+        y: 3633
+        width: 633
+        height: 41
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -227,12 +227,12 @@ TextureImporter:
       name: railgun fire_1
       rect:
         serializedVersion: 2
-        x: 809
-        y: 3635
-        width: 74
-        height: 38
+        x: 1384
+        y: 3633
+        width: 670
+        height: 59
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -249,12 +249,12 @@ TextureImporter:
       name: railgun fire_2
       rect:
         serializedVersion: 2
-        x: 1385
-        y: 3635
-        width: 110
-        height: 56
+        x: 2517
+        y: 3633
+        width: 707
+        height: 78
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -271,12 +271,12 @@ TextureImporter:
       name: railgun fire_3
       rect:
         serializedVersion: 2
-        x: 1943
-        y: 3635
-        width: 110
-        height: 56
+        x: 197
+        y: 2375
+        width: 742
+        height: 94
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -293,12 +293,12 @@ TextureImporter:
       name: railgun fire_4
       rect:
         serializedVersion: 2
-        x: 2519
-        y: 3653
-        width: 56
-        height: 56
+        x: 1330
+        y: 2356
+        width: 777
+        height: 129
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -315,12 +315,12 @@ TextureImporter:
       name: railgun fire_5
       rect:
         serializedVersion: 2
-        x: 2609
-        y: 3653
-        width: 56
-        height: 56
+        x: 2482
+        y: 2356
+        width: 777
+        height: 129
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -337,12 +337,12 @@ TextureImporter:
       name: railgun fire_6
       rect:
         serializedVersion: 2
-        x: 3077
-        y: 3635
-        width: 146
-        height: 74
+        x: 178
+        y: 1095
+        width: 777
+        height: 131
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -359,12 +359,12 @@ TextureImporter:
       name: railgun fire_7
       rect:
         serializedVersion: 2
-        x: 197
-        y: 2375
-        width: 74
-        height: 92
+        x: 1330
+        y: 1204
+        width: 777
+        height: 22
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -377,605 +377,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: railgun fire_8
-      rect:
-        serializedVersion: 2
-        x: 305
-        y: 2375
-        width: 74
-        height: 92
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7125cca2cf88721d0800000000000000
-      internalID: -3375578779059727849
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_9
-      rect:
-        serializedVersion: 2
-        x: 755
-        y: 2375
-        width: 74
-        height: 92
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 7ece8eec3b78161b0800000000000000
-      internalID: -5665097649915106073
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_10
-      rect:
-        serializedVersion: 2
-        x: 863
-        y: 2375
-        width: 74
-        height: 92
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 3f39df4579ccf4770800000000000000
-      internalID: 8597315164011598835
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_11
-      rect:
-        serializedVersion: 2
-        x: 1331
-        y: 2357
-        width: 92
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: dfdcce4c4b2f3de00800000000000000
-      internalID: 1068464394828828157
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_12
-      rect:
-        serializedVersion: 2
-        x: 1457
-        y: 2357
-        width: 92
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 4d6cbfe92a9a533e0800000000000000
-      internalID: -2074565537417148716
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_13
-      rect:
-        serializedVersion: 2
-        x: 1889
-        y: 2357
-        width: 92
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 96cc7f19137450640800000000000000
-      internalID: 5045517235766414441
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_14
-      rect:
-        serializedVersion: 2
-        x: 2015
-        y: 2357
-        width: 92
-        height: 128
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 14f7524f7c59d8dc0800000000000000
-      internalID: -3635084638190993599
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_15
-      rect:
-        serializedVersion: 2
-        x: 2483
-        y: 2429
-        width: 56
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: f62bc89d4dadd65e0800000000000000
-      internalID: -1914633658844794257
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_16
-      rect:
-        serializedVersion: 2
-        x: 2645
-        y: 2429
-        width: 56
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ec1b7049c3ff5ce70800000000000000
-      internalID: 9134988054837572046
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_17
-      rect:
-        serializedVersion: 2
-        x: 3041
-        y: 2429
-        width: 56
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5b198e8d63a798a40800000000000000
-      internalID: 5370958406601970101
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_18
-      rect:
-        serializedVersion: 2
-        x: 3203
-        y: 2429
-        width: 56
-        height: 56
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: c5c74176f96120f70800000000000000
-      internalID: 9151902266655276124
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_19
-      rect:
-        serializedVersion: 2
-        x: 2519
-        y: 2357
-        width: 38
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9726dbaba5964ea20800000000000000
-      internalID: 3090711082683949689
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_20
-      rect:
-        serializedVersion: 2
-        x: 2627
-        y: 2357
-        width: 38
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 977ecf329c17483b0800000000000000
-      internalID: -5511154935288502407
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_21
-      rect:
-        serializedVersion: 2
-        x: 3077
-        y: 2357
-        width: 38
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b2a5764940aa1bcb0800000000000000
-      internalID: -4849908387054921173
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_22
-      rect:
-        serializedVersion: 2
-        x: 3185
-        y: 2357
-        width: 38
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1e4ab53ce0413ce90800000000000000
-      internalID: -7006734541618699039
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_23
-      rect:
-        serializedVersion: 2
-        x: 179
-        y: 1187
-        width: 38
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d1dd232b9f11c41b0800000000000000
-      internalID: -5671138066632090339
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_24
-      rect:
-        serializedVersion: 2
-        x: 359
-        y: 1187
-        width: 38
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 9615d62977914e410800000000000000
-      internalID: 1505356176797028713
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_25
-      rect:
-        serializedVersion: 2
-        x: 737
-        y: 1187
-        width: 38
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 8bcd01dfab66a8a10800000000000000
-      internalID: 1912453945067887800
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_26
-      rect:
-        serializedVersion: 2
-        x: 917
-        y: 1187
-        width: 38
-        height: 38
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 73627fc4f99af90c0800000000000000
-      internalID: -4566744995474233801
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_27
-      rect:
-        serializedVersion: 2
-        x: 1331
-        y: 1205
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 5925d005f4f2a92d0800000000000000
-      internalID: -3271250161639271787
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_28
-      rect:
-        serializedVersion: 2
-        x: 1529
-        y: 1205
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1adfd1fa364389910800000000000000
-      internalID: 1844281650152603041
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_29
-      rect:
-        serializedVersion: 2
-        x: 1889
-        y: 1205
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: cd08dc24bbb9435e0800000000000000
-      internalID: -1930747111653146404
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_30
-      rect:
-        serializedVersion: 2
-        x: 2087
-        y: 1205
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 47cb0ae11cfbd32e0800000000000000
-      internalID: -2144347011395044236
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_31
-      rect:
-        serializedVersion: 2
-        x: 215
-        y: 1097
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 78f6bbb9cd7d6ae80800000000000000
-      internalID: -8167603531684286585
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_32
-      rect:
-        serializedVersion: 2
-        x: 341
-        y: 1097
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 77e1fa966732fbec0800000000000000
-      internalID: -3549078989858464137
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_33
-      rect:
-        serializedVersion: 2
-        x: 773
-        y: 1097
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 28391b52596b04f50800000000000000
-      internalID: 6863686583811412866
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: railgun fire_34
-      rect:
-        serializedVersion: 2
-        x: 899
-        y: 1097
-        width: 20
-        height: 20
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 61684d223b1ba5ac0800000000000000
-      internalID: -3865581947202533866
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: d39655034a7b1482d84e6af635aace4e
     internalID: 0
     vertices: []
     indices: 
@@ -987,39 +393,12 @@ TextureImporter:
     nameFileIdTable:
       railgun fire_0: -4522211124297209675
       railgun fire_1: -3534382348868028371
-      railgun fire_10: 8597315164011598835
-      railgun fire_11: 1068464394828828157
-      railgun fire_12: -2074565537417148716
-      railgun fire_13: 5045517235766414441
-      railgun fire_14: -3635084638190993599
-      railgun fire_15: -1914633658844794257
-      railgun fire_16: 9134988054837572046
-      railgun fire_17: 5370958406601970101
-      railgun fire_18: 9151902266655276124
-      railgun fire_19: 3090711082683949689
       railgun fire_2: -1066160443359563959
-      railgun fire_20: -5511154935288502407
-      railgun fire_21: -4849908387054921173
-      railgun fire_22: -7006734541618699039
-      railgun fire_23: -5671138066632090339
-      railgun fire_24: 1505356176797028713
-      railgun fire_25: 1912453945067887800
-      railgun fire_26: -4566744995474233801
-      railgun fire_27: -3271250161639271787
-      railgun fire_28: 1844281650152603041
-      railgun fire_29: -1930747111653146404
       railgun fire_3: 8779693333864234824
-      railgun fire_30: -2144347011395044236
-      railgun fire_31: -8167603531684286585
-      railgun fire_32: -3549078989858464137
-      railgun fire_33: 6863686583811412866
-      railgun fire_34: -3865581947202533866
       railgun fire_4: 3770838285167072593
       railgun fire_5: 1419085404867500015
       railgun fire_6: 2336381815089136573
       railgun fire_7: -6424636125176365687
-      railgun fire_8: -3375578779059727849
-      railgun fire_9: -5665097649915106073
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

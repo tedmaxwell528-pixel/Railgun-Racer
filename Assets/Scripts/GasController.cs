@@ -22,7 +22,6 @@ public class GasController : MonoBehaviour
             currentGas = Mathf.Clamp(currentGas - 0.01f, 0.01f, maxGas);
             useGasTimer = 0;
         }
-        //Debug.Log(currentGas);
     }
 
     /// <summary>

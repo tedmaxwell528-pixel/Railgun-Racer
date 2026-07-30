@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4499280288718553990}
   - component: {fileID: 8274636647009836646}
   - component: {fileID: 4432682442714339767}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tire Pile
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
