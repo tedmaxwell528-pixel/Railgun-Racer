@@ -18,6 +18,6 @@ public class Instructions : MonoBehaviour
         gasCan.SetActive(true);
         gasText.SetActive(true);
         Time.timeScale = 1;
-        AudioController.startSoundLoops.Invoke();
+        AudioController.toggleSoundLoops?.Invoke(true);
     }
 }

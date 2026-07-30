@@ -233,6 +233,12 @@ MonoBehaviour:
   stuckSpeed: 0.5
   stuckTime: 1
   reverseDuration: 1
+  topSpeed: 120
+  moveSpeed: 120
+  accelerationAmount: 5
+  rotationSpeed: 300
+  getCloserDuration: 2
+  tooFar: 50
 --- !u!212 &16664099
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2538,7 +2544,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &787891320
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3439,7 +3445,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1086869921
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4866,7 +4872,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 1936439195
   m_SortingLayer: 2
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_Sprite: {fileID: -2296321627639707017, guid: 684fa205e97eefd458c61136765f6fe6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4997,10 +5003,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83af63729fb094b42a7c4d80d22334c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpawnPoint: {fileID: 1730398739}
+  leftGun: {fileID: 0}
+  rightGun: {fileID: 0}
   bulletPrefab: {fileID: 2593101836693057914, guid: 2c2f8746846c44b019bb58618593621f, type: 3}
   shootSfx: {fileID: 0}
   bulletSpeed: 20
+  fireFrames: []
 --- !u!1001 &1632636736
 PrefabInstance:
   m_ObjectHideFlags: 0

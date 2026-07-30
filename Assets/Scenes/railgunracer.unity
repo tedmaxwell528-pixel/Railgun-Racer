@@ -469,6 +469,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3155369824537971296, guid: 82503c4a7c21b6640b43df25e056a7a5, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 3035233558269665836, guid: f320c2eda5298475984298c82ac58347, type: 3}
     - target: {fileID: 6921883813196032720, guid: 82503c4a7c21b6640b43df25e056a7a5, type: 3}
       propertyPath: m_Name
       value: Road_3_0 (1)

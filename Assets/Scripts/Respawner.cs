@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class Respawner : MonoBehaviour
 {
@@ -7,27 +8,23 @@ public class Respawner : MonoBehaviour
     [SerializeField] List<Sprite> explodeFrames;
     float respawnCooldown = 5;
     float respawnTimer;
-    bool explodeOnce = true;
+    public Action explode = null;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         respawnTimer = respawnCooldown;
         RespawnObject();
+        explode += Explosion;
     }
 
     // Update is called once per frame
     void Update(){
         if (transform.childCount == 0){
-            if (explodeOnce){
-                StartCoroutine(Animate.CreateAnimation(explodeFrames, GetComponent<SpriteRenderer>(), 0.03f));
-                explodeOnce = false;
-            }
             respawnTimer -= Time.deltaTime;
             if (respawnTimer <= 0){
                 RespawnObject();
                 respawnTimer = respawnCooldown;
-                explodeOnce = true;
             }
         }
     }
@@ -40,5 +37,9 @@ public class Respawner : MonoBehaviour
             respawnedObject.layer = LayerMask.NameToLayer("Obstacle");
         }
         respawnedObject.transform.localPosition = Vector3.zero;
+    }
+
+    void Explosion(){
+        StartCoroutine(Animate.CreateAnimation(explodeFrames, GetComponent<SpriteRenderer>(), 0.03f));
     }
 }
