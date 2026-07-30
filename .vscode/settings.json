@@ -67,5 +67,5 @@
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "Railgun-Racer.slnx"
+    "dotnet.defaultSolution": "Railgun-Racing.slnx"
 }

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -13,9 +14,10 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.CompareTag("Obstacle")){
+            collision.gameObject.transform.parent.GetComponent<Respawner>().explode?.Invoke();
             Destroy(collision.gameObject);
             PointsManager.AlterScore(100);
-            AudioController.playSfx.Invoke(hitSfx);
+            AudioController.playSfx?.Invoke(hitSfx);
             Destroy(gameObject);
         }
     }

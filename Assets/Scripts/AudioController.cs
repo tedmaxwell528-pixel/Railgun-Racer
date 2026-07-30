@@ -1,31 +1,36 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class AudioController : MonoBehaviour
 {
-    AudioSource bgmPlayer, sfxPlayer;
-    [SerializeField] AudioSource driveLoopPlayer;
+    [SerializeField] AudioSource bgmPlayer, sfxPlayer, driveLoopPlayer;
     [SerializeField] AudioClip driveLoop;
     [SerializeField] AudioClip bgmLoop;
     public static Action<AudioClip> playSfx = null;
-    public static Action startSoundLoops = null;
+    public static Action<bool> toggleSoundLoops = null;
     public static Action<bool> isDriving = null;
+    public static AudioController instance = null;
 
     void Awake()
     {
-        sfxPlayer = GetComponent<AudioSource>();
+        if (instance == null){
+            instance = this;
+            DontDestroyOnLoad(gameObject);
+        } else {
+            Destroy(gameObject);
+        }
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        bgmPlayer = Camera.main.gameObject.GetComponent<AudioSource>();
         bgmPlayer.clip = bgmLoop;
         bgmPlayer.loop = true;
         driveLoopPlayer.clip = driveLoop;
         driveLoopPlayer.loop = true;
         playSfx += PlaySound;
-        startSoundLoops += StartLoops;
+        toggleSoundLoops += ToggleLoops;
         isDriving += DriveLoopState;
     }
 
@@ -34,9 +39,14 @@ public class AudioController : MonoBehaviour
         sfxPlayer.Play();
     }
 
-    void StartLoops(){
-        bgmPlayer.Play();
-        driveLoopPlayer.Play();
+    void ToggleLoops(bool state){
+        if (state){
+            bgmPlayer.Play();
+            driveLoopPlayer.Play();
+        } else {
+            bgmPlayer.Pause();
+            driveLoopPlayer.Pause();
+        }
     }
 
     void DriveLoopState(bool state){
