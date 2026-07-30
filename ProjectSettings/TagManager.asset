@@ -40,8 +40,17 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 97327605
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Trail
+    uniqueID: 1377628931
+    locked: 0
+  - name: Car
+    uniqueID: 1936439195
     locked: 0
   m_RenderingLayers:
   - Default
