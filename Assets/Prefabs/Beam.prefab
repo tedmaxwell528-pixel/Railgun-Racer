@@ -103,7 +103,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   life: 3
-  hitSfx: {fileID: 0}
+  hitSfx: {fileID: 8300000, guid: bd929c56170ba7d4aac0b955ecc00222, type: 3}
+  explodeFrames:
+  - {fileID: 5986030973748356752, guid: c57cafe40987f4864af33f4d34b2803d, type: 3}
+  - {fileID: -5600206312213581617, guid: c57cafe40987f4864af33f4d34b2803d, type: 3}
+  - {fileID: 3815954189206336483, guid: c57cafe40987f4864af33f4d34b2803d, type: 3}
+  - {fileID: -3690502768834906923, guid: c57cafe40987f4864af33f4d34b2803d, type: 3}
+  - {fileID: -49130668184793455, guid: c57cafe40987f4864af33f4d34b2803d, type: 3}
+  - {fileID: -2330519403281856691, guid: c57cafe40987f4864af33f4d34b2803d, type: 3}
+  - {fileID: -4796932125324312052, guid: c57cafe40987f4864af33f4d34b2803d, type: 3}
 --- !u!50 &4483999228335432585
 Rigidbody2D:
   serializedVersion: 5

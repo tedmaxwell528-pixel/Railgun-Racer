@@ -1,11 +1,8 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public Action caught = null;
-    public Action restart = null;
     public static SceneLoader instance = null;
 
     void Awake(){
@@ -17,18 +14,19 @@ public class SceneLoader : MonoBehaviour
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        caught += EndGame;
-        restart += StartGame;
+    public static void MainMenu(){
+        SceneManager.LoadScene("Start Screen");
     }
 
-    public void StartGame(){
+    public static void StartGame(){
         SceneManager.LoadScene("Winson");
     }
 
-    void EndGame(){ 
+    public static void EndGame(){ 
         SceneManager.LoadScene("End Screen");
+    }
+
+    public void QuitGame(){
+        Application.Quit();
     }
 }
