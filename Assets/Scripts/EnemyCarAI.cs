@@ -5,7 +5,6 @@ public class EnemyCarAI : MonoBehaviour
 {
     [SerializeField] CarMovement carMovement;
     Transform player;
-    private SceneLoader sceneLoader;
 
     [Header("Path Following")]
     [SerializeField] int breadcrumbDelay = 40;
@@ -21,21 +20,24 @@ public class EnemyCarAI : MonoBehaviour
     [SerializeField] float stuckTime = 1f;
     [SerializeField] float reverseDuration = 1f;
 
+    [Header("Stats")]
+    [SerializeField] private float topSpeed = 120;
+    [SerializeField] private float moveSpeed = 120;
+    [SerializeField] private float accelerationAmount = 5;
+    [SerializeField] private float rotationSpeed = 300;
+    [SerializeField] private float getCloserDuration = 2;
+    [SerializeField] private float tooFar = 50;
+
+    [SerializeField] private AudioClip playerDie;
+
     private int targetIndex;
     private int breadcrumbsCount = PlayerBreadcrumbs.breadcrumbs.Count;
-    private float topSpeed = 120;
-    private float accelerationAmount = 5;
-    private float rotationSpeed = 300;
-    private float moveSpeed = 120;
-    private float getCloserDuration = 2;
-    private float tooFar = 50;
     private Vector2 lastPosition;
     private float stuckTimer, reverseTimer, reverseSteer, steeringInput, accelerationInput, closerTimer;
     private bool reversing;
 
     void Start()
     {
-        sceneLoader = GameObject.FindWithTag("GameController").GetComponent<SceneLoader>();
         lastPosition = transform.position;
         player = GameObject.FindWithTag("Player").transform;
         closerTimer = getCloserDuration;
@@ -123,7 +125,10 @@ public class EnemyCarAI : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision){
-        if (sceneLoader != null && collision.gameObject.CompareTag("Player")) sceneLoader.caught.Invoke();
+        if (collision.gameObject.CompareTag("Player")){
+            AudioController.playSfx.Invoke(playerDie);
+            SceneLoader.EndGame();
+        }
     }
 
     /// <summary>

@@ -10,6 +10,6 @@ public class RestartGame : MonoBehaviour
     }
 
     public void Restart(){
-        sceneLoader.restart.Invoke();
+        SceneLoader.MainMenu();
     }
 }

@@ -8,7 +8,7 @@ public class FuelPickup : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            FuelSystem.ChangeFuel(10);
+            FuelSystem.ChangeFuel(20);
             AudioController.playSfx.Invoke(pickupFuelSfx);
             Destroy(gameObject);
         }
