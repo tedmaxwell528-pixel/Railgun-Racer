@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 58fdcfe3db85ca74ab5fec776b94829e
+guid: 5d29b6e0a224d497ebdcf1ae3d1f7304
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3818513689908377513
-    second: Road_2 2_0
+      213: 5212168117751077929
+    second: Road_2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,7 +100,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Road_2 2_0
+      name: Road_2_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9a774f838f51ef430800000000000000
-      internalID: 3818513689908377513
+      spriteID: 92c5b20b947555840800000000000000
+      internalID: 5212168117751077929
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Road_2 2_0: 3818513689908377513
+      Road_2_0: 5212168117751077929
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
