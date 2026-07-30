@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyCarAI : MonoBehaviour
@@ -7,7 +8,7 @@ public class EnemyCarAI : MonoBehaviour
 
     [Header("Path Following")]
     [SerializeField] int breadcrumbDelay = 40;
-    int currentDelay;
+    [SerializeField] int currentDelay;
     int minDelay = 5;
 
     [Header("Acceleration")]
@@ -52,7 +53,7 @@ public class EnemyCarAI : MonoBehaviour
 
         // Follow breadcrumbs.
         targetIndex = Mathf.Clamp(
-            breadcrumbsCount - breadcrumbDelay,
+            breadcrumbsCount - currentDelay,
             0,
             breadcrumbsCount - 1
         );
