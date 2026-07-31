@@ -6,7 +6,6 @@ TagManager:
   tags:
   - Obstacle
   - Wall
-  - AudioController
   layers:
   - Default
   - TransparentFX

@@ -3,7 +3,6 @@ using UnityEngine;
 public class Instructions : MonoBehaviour
 {
     [SerializeField] GameObject instructions, gasCan, gasText;
-    private SceneLoader sceneLoader;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start(){

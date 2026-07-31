@@ -44,8 +44,8 @@ public class AudioController : MonoBehaviour
             bgmPlayer.Play();
             driveLoopPlayer.Play();
         } else {
-            bgmPlayer.Pause();
-            driveLoopPlayer.Pause();
+            bgmPlayer.Stop();
+            driveLoopPlayer.Stop();
         }
     }
 

@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    [SerializeField] GameObject creditsScreen;
     public static SceneLoader instance = null;
 
     void Awake(){
@@ -19,11 +20,16 @@ public class SceneLoader : MonoBehaviour
     }
 
     public static void StartGame(){
+        ScoreManager.Score = 0;
         SceneManager.LoadScene("Winson");
     }
 
     public static void EndGame(){ 
         SceneManager.LoadScene("End Screen");
+    }
+
+    public static void CreditsScreen(){
+        SceneManager.LoadScene("Credits");
     }
 
     public void QuitGame(){
