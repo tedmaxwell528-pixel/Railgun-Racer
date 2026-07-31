@@ -2,16 +2,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+/// <summary>
+/// Disable the game object when not debugging/playtesting.
+/// </summary>
 public class CheatManager : MonoBehaviour
 {
     string killCommand = "";
     List<string> registeredKeys = new List<string>();
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()

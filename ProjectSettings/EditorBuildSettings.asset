@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Start Screen.unity
     guid: 67fe772efc6f04aaca5604bc3c2f527f
   - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: a886f3cc67c7646bc9f006d963223e27
+  - enabled: 1
     path: Assets/Scenes/Winson.unity
     guid: 015afdb7ebbf54b148783b5e6ae6fe44
   - enabled: 1
