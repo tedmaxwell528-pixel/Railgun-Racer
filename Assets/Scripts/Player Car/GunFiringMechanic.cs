@@ -9,7 +9,7 @@ public class GunFiringMechanic : MonoBehaviour
     [SerializeField] AudioClip shootSfx;
     [SerializeField] float bulletSpeed = 100;
     [SerializeField] List<Sprite> fireFrames;
-    float shootCooldown = 0.25f;
+    float shootCooldown = 0.2f;
     float shootTimer = 0;
     SpriteRenderer anim;
     bool fireFromLeft = true;

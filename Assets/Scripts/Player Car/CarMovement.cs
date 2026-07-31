@@ -32,11 +32,14 @@ public class CarMovement : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        gasPercentage = FuelSystem.GetGasPercentage();
+
         //Make camera track car
         mainCam.transform.position = new Vector3(transform.position.x, transform.position.y, mainCam.transform.position.z) + transform.up * cameraOffset;
 
-        //Turn car based on inputs
-        float totalRotation = GetTurnInput() * rotationSpeed * Time.deltaTime;
+        //Turn car based on inputs, rotation speed gets affected by gas percentage
+        float currentRotSpeed = rotationSpeed + 30 * gasPercentage;
+        float totalRotation = GetTurnInput() * currentRotSpeed * Time.deltaTime;
         transform.Rotate(0,0,totalRotation);
 
         //Accelerate car
@@ -68,7 +71,7 @@ public class CarMovement : MonoBehaviour
             FuelSystem.ChangeFuel(-2);
         } else if (collision.gameObject.CompareTag("Wall")){
             AudioController.playSfx?.Invoke(playerHit);
-            FuelSystem.ChangeFuel(-1);
+            FuelSystem.ChangeFuel(-0.5f);
         }
     }
 
