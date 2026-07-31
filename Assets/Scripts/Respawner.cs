@@ -32,7 +32,7 @@ public class Respawner : MonoBehaviour
     void RespawnObject(){
         GameObject respawnedObject = Instantiate(toRespawn, transform.position, Quaternion.identity);
         respawnedObject.transform.parent = transform;
-        if (transform.parent.name == "Cones"){
+        if (transform.parent.name == "Cones" || transform.parent.name == "Tires"){
             respawnedObject.tag = "Obstacle";
             respawnedObject.layer = LayerMask.NameToLayer("Obstacle");
         }
